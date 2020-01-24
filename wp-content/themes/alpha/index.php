@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
 
-<?php get_template_part( "hero" ); ?>
+<?php get_template_part( "template-parts/common/hero" ); ?>
 
 <div class="posts" <?php post_class(); ?>>
 
@@ -30,12 +30,24 @@
                     <p>
                         <?php 
                         if(has_post_thumbnail()){
+                            echo '<a class="popup" href="#" data-featherlight="image">';
                             the_post_thumbnail( "large", array("class"=>"img-fluid") );
+                            echo '</a>';
                         }
+
                         ?>
                     </p>
                     <?php 
+
                         the_excerpt();
+
+                    // if( !post_password_required() ){
+                    //     the_excerpt();
+                    // } else{
+                    //     echo get_the_password_form();
+                    // }
+                    
+                        
                     ?>
                 </div>
             </div>
