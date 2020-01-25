@@ -1,0 +1,17 @@
+/* 
+Theme Name: Launcher
+Theme URL: 
+Author: Iftekhar Rahman
+Author URL: http://localhost/lwhh
+Description:  Our First HyperMinimal Theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License: ULR: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: blog, education
+Text Domain: launcher
+*/
+
+
+.launcher-sidebar{
+    padding-top: 30px;
+}
