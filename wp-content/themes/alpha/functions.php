@@ -12,11 +12,22 @@ function alpha_bootstrapping(){
     load_theme_textdomain( "alpha" );
     // Enable support for Post Thumbnails on posts and pages
     add_theme_support( "post-thumbnails" );
+    // custom header details
+    $alpha_custom_logo_defaults = array(
+        "width"     => "100",
+        "height"    => "100",
+    );
+    add_theme_support( "custom-logo", $alpha_custom_logo_defaults );
     $alpha_custom_header_details = array(
-        'header-text'           => true,
-        'default-text-color'    => '#222',
+        "header-text"           => true,
+        "default-text-color"    => "#222",
+        "width"                 => "1200",
+        "height"                => "600",
+        "flex-height"           => true,
+
     );
     add_theme_support( "custom-header", $alpha_custom_header_details );
+    add_theme_support( "custom-background" );
     // Let WordPress manage the document title
     add_theme_support( "title-tag" );
     // menu registering

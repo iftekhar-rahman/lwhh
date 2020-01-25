@@ -23,7 +23,12 @@ h1.heading {
     padding-bottom: 50px;
     border-bottom: 1px solid #ccc;
 }
-
+.site-logo{
+    margin-top: 50px;
+}
+.site-logo img{
+    border-radius: 50px;
+}
 h3.tagline{
     font-family: Arial;
     margin:auto;
@@ -77,4 +82,12 @@ h2.post-title {
 
 .tags li{
     color: #3D9970;
+}
+.erro-page{
+    padding: 100px 0 200px;
+    
+}
+.erro-page h2{
+   font-size: 50px;
+   font-weight: bold;
 }

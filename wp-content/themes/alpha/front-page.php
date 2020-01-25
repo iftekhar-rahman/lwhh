@@ -1,3 +1,9 @@
+<?php
+/*
+* Template Name: front page
+*/ 
+?>
+
 <?php get_header(); ?>
 <body <?php body_class(); ?>>
 
@@ -9,7 +15,7 @@
     while( have_posts() ):
         the_post();
     ?>
-    
+
     <div class="post">
         <div class="container">
             <div class="row">
