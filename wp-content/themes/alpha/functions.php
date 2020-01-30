@@ -33,6 +33,8 @@ function alpha_bootstrapping(){
     // menu registering
     register_nav_menu( "topmenu", __("Top Menu", "alpha") );
     register_nav_menu( "footermenu", __("Footer Menu", "alpha") );
+
+    add_theme_support( "post-formats", array( "audio", "video", "quote", "link" ) );
 }
 add_action( "after_setup_theme", "alpha_bootstrapping" );
 
@@ -40,6 +42,7 @@ function alpha_assets(){
 
     wp_enqueue_style( "bootstrap-css", "//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" );
     wp_enqueue_style( "featherlight-css", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.css" );
+    wp_enqueue_style( "dashicons" );
     wp_enqueue_style( "alpha", get_stylesheet_uri(), null, VERSION );
 
     wp_enqueue_script( "featherlight-js", "//cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js", array("jquery"), "0.1", true );
@@ -153,3 +156,32 @@ function alpha_about_page_template_banner(){
     }
 }
 add_action("wp_head","alpha_about_page_template_banner",11);
+
+
+$defaults = array(
+    'before'           => '<p>' . __( 'Pages:', 'alpha' ),
+    'after'            => '</p>',
+    'link_before'      => '',
+    'link_after'       => '',
+    'next_or_number'   => 'number',
+    'separator'        => ' ',
+    'nextpagelink'     => __( 'Next page', 'alpha'),
+    'previouspagelink' => __( 'Previous page', 'alpha' ),
+    'pagelink'         => '%',
+    'echo'             => 1
+);
+wp_link_pages( $defaults );
+
+function alpha_body_class($classes){
+    unset( $classes[array_search("custom-background", $classes)]);
+    unset( $classes[array_search("single-format-audio", $classes)]);
+    $classes [] = "newclasses";
+    return $classes;
+}
+add_filter( "body_class", "alpha_body_class" );
+
+function alpha_post_class($classes){
+    unset( $classes[array_search("tag-weather", $classes)]);
+    return $classes;
+}
+add_filter( "post_class", "alpha_post_class" );
