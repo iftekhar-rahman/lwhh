@@ -34,25 +34,50 @@ if( !is_active_sidebar("sidebar-1") ){
                                 </p>
                             </div>
                             <div class="col-md-12">
-                                <p>
-                                    <?php 
-                                    
-                                    if(has_post_thumbnail()){
-                                        // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                        // // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
-                                        // printf( '<a href="%s" data-featherlight="image">', $thumbnail_url);
-                                        // the_post_thumbnail( "large", array("class"=>"img-fluid") );
-                                        // echo '</a>';
-
-                                        // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
-                                        // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
-                                        echo '<a class="popup" href="#" data-featherlight="image">';
-                                        the_post_thumbnail( "large", array("class"=>"img-fluid") );
-                                        echo '</a>';
+                                <div class="slider">
+                                    <?php
+                                    if ( class_exists( 'Attachments' ) ) {
+                                        $attachments = new Attachments( 'slider' );
+                                        if ( $attachments->exist() ) {
+                                            while ( $attachment = $attachments->get() ) { ?>
+                                                <div>
+                                                    <?php echo $attachments->image( 'large' ); ?>
+                                                </div>
+                                                <?php
+                                            }
+                                        }
                                     }
-                                    
                                     ?>
-                                </p>
+                                </div>
+                                <div>
+                                    <?php 
+                                    if ( !class_exists( 'Attachments' ) ) {
+                                        if(has_post_thumbnail()){
+                                            // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                            // // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
+                                            // printf( '<a href="%s" data-featherlight="image">', $thumbnail_url);
+                                            // the_post_thumbnail( "large", array("class"=>"img-fluid") );
+                                            // echo '</a>';
+
+                                            // $thumbnail_url = get_the_post_thumbnail_url(null, "large");
+                                            // echo '<a href="'.$thumbnail_url.'" data-featherlight="image">';
+                                            echo '<a class="popup" href="#" data-featherlight="image">';
+                                            the_post_thumbnail( "large", array("class"=>"img-fluid") );
+                                            echo '</a>';
+                                        }
+                                    }
+
+
+                                    the_post_thumbnail("alpha-square-new1");
+                                    echo "<br>";
+                                    echo "<br>";
+                                    the_post_thumbnail("alpha-square-new2");
+                                    echo "<br>";
+                                    echo "<br>";
+                                    the_post_thumbnail("alpha-square-new3");
+
+                                    ?>
+                                </div>
                                 <?php 
                                     the_content();
 

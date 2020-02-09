@@ -110,3 +110,11 @@ h2.post-title {
     margin-bottom: 40px;
     margin-top: 30px;
 }
+.testimonials img{
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+.search-highlight{
+    background-color: red;
+    color: #fff;
+}

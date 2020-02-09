@@ -3,6 +3,48 @@
 
     <?php get_template_part( "template-parts/common/hero" ); ?>
 
+    <div class="container">
+        <?php if(is_front_page()) { ?>
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <div class="testimonials-wrap text-center">
+                        <?php
+                        $attachments = new Attachments( 'testimonials', 39 );
+                        if ( class_exists( 'Attachments' ) && $attachments->exist() ) {
+                        ?>
+                        <h2><?php _e( "Testimonials", "alpha" ); ?></h2>
+                        <?php
+                        }
+                        ?>
+                        <div class="testimonials slider">
+                            <?php
+                            if ( class_exists( 'Attachments' ) ) {
+                                
+                                if ( $attachments->exist() ) {
+                                    while ( $attachment = $attachments->get() ) { ?>
+                                        <div>
+                                            <?php echo $attachments->image( 'thumbnail' ); ?>
+                                            <h4><?php echo esc_html($attachments->field( 'name' )); ?></h4>
+                                            <p><?php echo esc_html($attachments->field( 'testimonial' )); ?></p>
+                                            <p>
+                                                <?php echo esc_html($attachments->field( 'position' )); ?>
+                                                <strong>
+                                                    <?php echo esc_html($attachments->field( 'company' )); ?>
+                                                </strong>
+                                            </p>
+                                        </div>
+                                        <?php
+                                    }
+                                }
+                            }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
+
     <div class="posts" <?php post_class(); ?>>
 
         <?php
